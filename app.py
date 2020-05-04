@@ -173,7 +173,7 @@ df_lockdown['order'] = df_lockdown['type'].map({0: 'No lockdown order', 0.5: 'Pa
 for col in df_lockdown.columns: 
     df_lockdown[col] = df_lockdown[col].astype(str)
 
-df_lockdown['text'] = df_lockdown['date'] +'\n' + df_lockdown['state'] + ': ' + df_lockdown['order'] 
+df_lockdown['text'] = df_lockdown['date'] + df_lockdown['state'] + ': ' + df_lockdown['order'] 
 lockdown_date = list(df_lockdown.date.unique())
 
 color1 = [ "#ead6ee", "#aebaf8"]
@@ -182,16 +182,13 @@ color2 = ["#e8f5c8","#aebaf8"]
 #######world
 df_world = pd.read_csv('countryLockdown_date.csv')
 
-df_world['area'] = df_world['type'].map({0: 'Not lockdown', 0.5: 'Partial lockdown', 1: 'Full lockdown'})
+df_world['area'] = df_world['type'].map({0: 'No lockdown', 0.5: 'Partial lockdown', 1: 'Full lockdown'})
 
 for col in df_world.columns: 
     df_world[col] = df_world[col].astype(str)
-
+df_world['type']=df_world['type'].astype(float)
 df_world['text'] = df_world['date'] + df_world['region'] + ': ' + df_world['area'] 
-
 world_date = list(df_world.date.unique())
-world_date = sorted(world_date, key=lambda date: datetime.datetime.strptime(date, "%m/%d/%y"))
-
 color_lock = [ 'rgb(204,230,255)', 'rgb(133,122,173)', 'rgb(105,10,61)']
 
 
@@ -277,7 +274,7 @@ symbols3 = pd.DataFrame({'population':['All Adults', 'Registered Voters', 'Likel
 
 
 ####################################################################################
-#######################   Page 3 - Plot2.   Twiter      ##########################
+#######################   Page 3 - Plot2.   Twitter      ##########################
 ####################################################################################
 
 # daterange = pd.DataFrame(pd.date_range(start='3/22/2020',end='4/22/2020',freq='D'), columns = ['date'])
@@ -784,7 +781,7 @@ UNEMPLOYMENT = [
                                     60:{'label':'Jan 2020'}, 61:{'label':''}, 62:{'label':'Mar 2020'}},
                                     min = 0,
                                     max = 62,
-                                    value = [0, 62],
+                                    value = [25, 62],
                                     allowCross=True
                                     )           
                         # ],  style = {
@@ -1241,7 +1238,7 @@ def update_figure(world_time):
 
     fig = px.choropleth(lockdown_new, locations="iso_alpha",
                     color="type",
-                    hover_name="region", # column to add to hover information
+                    hover_name="region", 
                     color_continuous_scale=color_lock
                     #text= lockdown_new['text']
                     )
