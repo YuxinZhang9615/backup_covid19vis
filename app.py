@@ -373,6 +373,11 @@ NAVBAR = dbc.Navbar(
 FLATTEN_THE_CURVE = [
     dbc.CardHeader(html.H5("Flatten The Curve")),
     dbc.CardBody([
+        html.P("The pandemic of COVID-19 has become one of the major challenges of global public health. To help the public and decision-makers better understand the trend and influence of COVID-19, this project not only created visualizations to demonstrate the underlying patterns of COVID-19 and its impacts, but also added interactive features which allowed users to focus on the relevant aspects and obtain interesting findings from the information. The website contained five tabs, representing COVID-19’s overview and its impacts on Mobility, Public Opinion, Unemployment, and Legislation to answer if the curve has been flattened through various perspectives such as social media, mobility, unemployment, etc. ", className="card-text"),
+        html.P("The Overview page evaluated the lockdown and growth rates timeline on two levels: national-wise and global-wise. In the US, 42 states were on lockdown by Apr 7 (marked red), whereas most states in the central US were already partially open by Apr 21. Most states which are partially open claimed the stay-at-home earlier, whereas states with main metropolitan areas and cities generally started the lockdown later since there were more effects and concerns to lockdown major cities. ", className="card-text"),
+        html.P("On the global level, the line chart demonstrated which government handled the pandemic effectively. For instance, South Korea started the lockdown right at the first outbreak and effectively stopped the spreading of the virus. Unfortunately, Italy had missed the best time to lock down the country, as shown that the stay-at-home order was not issued until several outbreaks. ", className="card-text"),
+        html.P("The visualization showed that the stay-at-home order had helped flatten the curve, since the growth rates of both new cases and death had been steadily decreasing since the lockdowns on both national-wide and world-wide levels.", className="card-text"),
+        html.P("Select multiple countries in the dropdown and control the slider to see the change of the lockdown policy on the maps and the fluctuation of growth rate in confirmed cases and death through time on the line charts. "),
         dbc.Row([
             html.Label("Select countries to include in the line plot:", style={'marginLeft':'10px'}),
             dcc.Dropdown(
@@ -591,38 +596,31 @@ MAP_LOCKDOWN = [
 #     dbc.CardBody([
 #         dbc.Row([
 #             dbc.Col([
-#                 html.Label("Choose a state"),
-#                 dcc.Dropdown(id = 'opt_s', options = opt_state,
-#                                 value = 'The Whole Country')
+#                 html.Label("Choose a state")
 #                 ], width = 6),
 #             dbc.Col([
-#                 html.Label("Choose a county"),
-#                     dcc.Dropdown(id = 'opt_c')
-#                 ], width = 6)
-#             ]),
-#         dbc.Row([
-#             dbc.Col([
-#                 html.Label("Time Period"),
-#                 dcc.RangeSlider(id = 'slider',
-#                                     marks = {i : dates[i] for i in range(0, 7)},
-#                                     min = 0,
-#                                     max = 6,
-#                                     value = [1, 5])
-#                 ], width = 12)
-            
-#             ]),
-#         dbc.Row([
-#             dbc.Col([
-#                 dcc.Graph(id = 'google_fig')
-#                 ], width = 6),
-#             dbc.Col([
-#                 dcc.Graph(id = 'all_fig')
+#                 html.Label("Choose a county")
+                    
 #                 ], width = 6)
 #             ])
-
-
+    
 #         ])
 # ]
+
+MOBILITY =[
+    dbc.CardHeader(html.H5('Mobility: Are people really following the stay-at-home rules?')),
+    dbc.CardBody([
+        html.P("The Mobility page presented mobility data in the US and main cities around the world. It showed that since March, people around the world had stayed at home more often and stopped traveling around as much. Moreover, in the line chart where the mobility was broken down into 6 categories, there existed some interesting periodical patterns: people stopped going to malls (retails) and taking public transportation since mid-March, when most states started the lockdown. Although most people stopped going to work and stayed at home, as shown in the mobility trends for workplaces and residential neighborhoods, the periodic patterns were more obvious in these two plots: people are more likely not at home and shortly stop by their office on weekends. “Grocery” and “Parks” showed that before lockdown, there were much more people panic buying and hiking than usual. After lockdown, people went grocery shopping and hiking less often as people became more cautious about going outside. ", className="card-text"),
+        html.P("The plots also showed that people were not used to the quarantine life at the beginning of the lockdown, but most people had eventually developed their routines for activities such as grocery shopping. Overall, the mobility page showed that people generally were following the stay-at-home order. ", className="card-text"),
+        html.P("Use the dropdown to select states and counties and adjust the slider to view the change of mobility through time. Due to the capacity limitation of the website server, the mobility page will be presented as a youtube video."),
+        dbc.Row([
+            dbc.Col([
+                html.Iframe(src = "https://www.youtube.com/embed/zWfyxknakAs", width="100%", height = '600px')
+                ], width = 12)
+            ])
+
+        ])
+    ]
 
 SURVEY_MEDIA = [
     dbc.CardHeader(html.H5("Survey")),
@@ -644,6 +642,8 @@ SURVEY_MEDIA = [
         #         ], width = 10),
 
         #     ]),
+        html.P("The Public Opinion page researched people’s opinions and concerns during the pandemic through surveys, social media posts and google search results. Surveys showed that after the first death in the US, people had been much more worried about COVID-19. Also, younger people and registered voters were generally less worried about COVID-19 than the others. "),
+        html.P("Use the radio button and select multiple sources of surveys in blank to see the comparison among participants’ opinions. "),
         dbc.Row([
             dbc.Col([
                 html.H5("Choose Filter :"),
@@ -683,27 +683,28 @@ SURVEY_MEDIA = [
 
 ]
 
-markdict = {0: {'label': '2020-03-22'},
+markdict = {0: {'label': '3-22'},
             1: {'label': ''}, 2: {'label': ''}, 3: {'label': ''}, 4: {'label': ''},
-            5: {'label': '2020-03-27'}, 
+            5: {'label': '3-27'}, 
             6: {'label': ''}, 7: {'label': ''}, 8: {'label': ''}, 9: {'label': ''},
-            10: {'label': '2020-04-01'},
+            10: {'label': '4-01'},
             11: {'label': ''}, 12: {'label': ''}, 13: {'label': ''}, 14: {'label': ''},
-            15: {'label': '2020-04-06'},
+            15: {'label': '4-06'},
             16: {'label': ''}, 17: {'label': ''}, 18: {'label': ''}, 19: {'label': ''},
-            20: {'label': '2020-04-11'},
+            20: {'label': '4-11'},
             21: {'label': ''}, 22: {'label': ''}, 23: {'label': ''}, 24: {'label': ''},
-            25: {'label': '2020-04-16'}, 
+            25: {'label': '4-16'}, 
             26: {'label': ''}, 27: {'label': ''}, 28: {'label': ''}, 29: {'label': ''},
-            30: {'label': '2020-04-21'},
+            30: {'label': '4-21'},
             31: {'label': ''}, 32: {'label': ''}, 33: {'label': ''}, 
-            34: {'label': '2020-04-25'},
-            35: {'label': ''}, 36: {'label': ''}, 37: {'label': ''},
-            38: {'label': '2020-04-29'}}
+            34: {'label': '4-25'},
+            35: {'label': ''}, 36: {'label': ''}, 37: {'label': '4-28'},
+            38: {'label': ''}}
 
 TWEETER = [
     dbc.CardHeader(html.H5('Twitter HoT Words ')),
     dbc.CardBody([
+        html.P("Control the slider to check Twitter trending words on a selected day. The image on the left word cloud of hot debating topics on Twitter. The table on the right displayed the top keywords with their popularities."),
         dbc.Row([
             dbc.Col([
                 dcc.Slider(
@@ -713,19 +714,17 @@ TWEETER = [
                         max=38,
                         value=38,
                         marks=markdict,
-                        step=1)
-
+                        step=1,
+                        included=False)
                 ], width = 12)
-
-
             ]),
         dbc.Row([
             dbc.Col([
-                html.Div(id="image", style = {'width': '100%'})
-                ], width = 8),
+                html.Div(id="image", style = {'width': '100%', 'margin-top': '100px'})
+                ], width = 7),
             dbc.Col([
                 dcc.Graph(id ='hot-table', style={'display': 'inline-block','width':'100%'})
-                ], width = 4)
+                ], width = 5)
 
             ])
 
@@ -737,16 +736,16 @@ GOOGLE =[
     dbc.CardHeader(html.H5('Google Search Trend')),
     dbc.CardBody([
         dbc.Row([
+            html.P("The google search results and Twitter hot words showed the change of trending topics since the lockdown. Before the lockdown, people paid close attention to the information about COVID-19, whose main source had changed from the JHU to CDC website. Since the quarantine started, besides the virus, people spent more time searching for online-streaming services (Netflix) and online shopping websites (Amazon). Meanwhile, people still cared about news and trending topics such as the stock and NFL. Discussions about political figures were also trending. More recently, people started searching more about reopening the state and protests. It proved that people’s concerns were mainly related to COVID-19’s impacts and the government’s response, and the concerns might be shifted through time.  "),
+            html.P("Use the slider on the bottom of the bar racing chart to see the change of trending topics in a certain time period."),
             dbc.Col([
                 html.Iframe(src = "https://public.flourish.studio/visualisation/2211837/", width="100%", height = '600px')
                 ], width = 6),
 
             dbc.Col([
-                dbc.Jumbotron([
-                    html.Img(src = "assets/googleTrend5.png",
-                            style = {"width" : '400px'})
-                    ])
-                
+                #dbc.Jumbotron([
+                html.Img(src = "assets/googleTrend5.png", height = '600px')
+                #    ])
                 
                 ], width = 6)
             ])
@@ -758,8 +757,12 @@ GOOGLE =[
 UNEMPLOYMENT = [
     dbc.CardHeader(html.H5("Unemployment")),
     dbc.CardBody([
+        html.P("The Unemployment Page examined the unemployment rate by each US State since 2015. Before the pandemic, the unemployment rate was gradually going down, whereas the unemployment rate started rising again since the outbreak of COVID-19. Especially at the end of March 2020 when most states were under lockdown, the number of unemployment claims had grown significantly. The line chart showed that the most impacted states included those whose major economic sectors were tourism, such as Florida and  Colorado. This page revealed that the unemployment condition in each state is closely related to its economic structure. States which relied more on tourism and manufacturing would expect growth in unemployment rates during the pandemic."),
+        html.P("The unemployment rate decreased for the year but sharply increased in Mar 2020. Meanwhile the unemployment claims boosted as more states were locked down and people lost their jobs. Use both buttons on the slider to control both points along the slider to choose the unemployment rate in a certain period of time. The button on the left also controls the map, which compares the unemployment rate among states. "),
+        html.P("The US map on the left showed the unemployment rate by states. The line chart on the top right showed the changes of unemployment rates by states. The line chart on the bottom right showed the increasing unemployment claims by weeks."),
+        html.P("Use the dropdown to select multiple states by and compare the unemployment rate and unemployment claims by states. "),
         dbc.Row([
-            dbc.Col([
+                dbc.Col([
                 # html.P([
                     html.Label("Time Period"),
                     dcc.RangeSlider(id = 'RangeSlider',
@@ -831,7 +834,7 @@ UNEMPLOYMENT = [
 LEGAL_TABLE = [
     dbc.CardHeader(html.H5("Legislation Search Table")),
     dbc.CardBody([
-
+        html.P("The Legislation page demonstrated the COVID-19 related legislations in each state. Search certain legislations by keywords, selected states, or their status. Users can directly access the proposal by zooming in the bar chart on the right and clicking each “book” icon. Detailed information for selected legislations would be displayed in the table on the left. "),
         dbc.Row([
             dbc.Col([
                 html.Label("Search By Keywords", style = {'fontSize': 15}),
@@ -912,7 +915,7 @@ BODY = dbc.Container([
             ], className='custom-tab'),
 
         dcc.Tab(label='Mobility', children=[
-            #dbc.Row([dbc.Col(dbc.Card(MOBILITY)),], style={"marginTop": 30})
+            dbc.Row([dbc.Col(dbc.Card(MOBILITY)),], style={"marginTop": 30})
 
             ], className='custom-tab'),
 
@@ -1763,31 +1766,37 @@ def update_fig_s1(selected_pollsters, radio_display1):
                                 "Stimulus bill",
                                 "U.S Oil Price Hits $15"],
                             mode="text",
+                            showlegend=False
                         ),
                 go.Scatter(x = ['2020-02-29', '2020-02-29'],
                          y = [0,70],
                          mode = 'lines',
-                         line = dict(color = "grey",width=1, dash="dashdot")
+                         line = dict(color = "grey",width=1, dash="dashdot"),
+                         showlegend=False
                         ),
                 go.Scatter(x = ['2020-03-09', '2020-03-09'],
                          y = [0,70],
                          mode = 'lines',
-                         line = dict(color = "grey",width=1, dash="dashdot")
+                         line = dict(color = "grey",width=1, dash="dashdot"),
+                         showlegend=False
                         ),
                 go.Scatter(x = ['2020-03-12', '2020-03-12'],
                          y = [0,70],
                          mode = 'lines',
-                         line = dict(color = "grey",width=1, dash="dashdot")
+                         line = dict(color = "grey",width=1, dash="dashdot"),
+                         showlegend=False
                         ),
                 go.Scatter(x = ['2020-03-27', '2020-03-27'],
                          y = [0,70],
                          mode = 'lines',
-                         line = dict(color = "grey",width=1, dash="dashdot")
+                         line = dict(color = "grey",width=1, dash="dashdot"),
+                         showlegend=False
                         ),
                 go.Scatter(x = ['2020-04-19', '2020-04-19'],
                          y = [0,70],
                          mode = 'lines',
-                         line = dict(color = "grey",width=1, dash="dashdot")
+                         line = dict(color = "grey",width=1, dash="dashdot"),
+                         showlegend=False
                         )]
 
 
@@ -1982,7 +1991,7 @@ def update_fig_s1(selected_pollsters, radio_display1):
 
 def update_output(value):
     src1 = "https://raw.githubusercontent.com/yyyyyokoko/covid-19-challenge/master/twitterViz/images/" + daterange[value] + '.png'
-    img = html.Img(src=src1,  style={'height':'50%', 'width':'50%', 'display': 'inline-block'})
+    img = html.Img(src=src1,  style={'width':'100%', 'display': 'inline-block'})
     return img
 
 @app.callback(
