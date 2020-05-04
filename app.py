@@ -812,7 +812,8 @@ UNEMPLOYMENT = [
                     dcc.Dropdown(id = 'opt', 
                                  options = opts,
                                  placeholder="Select any states",
-                                 value = [opts[0]['value'],  opts[2]['value']],                                 
+                                 value = [opts[5]['value'],opts[19]['value'],
+                                        opts[31]['value'],opts[45]['value']],                                 
                                  searchable=True,                              
                                  multi=True)
                         # ], style = {'width': '400px',
